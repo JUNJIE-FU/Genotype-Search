@@ -1,4 +1,4 @@
-# ZEAMAP Genotype Data Search Module
+# [ZEAMAP Genotype Data Search Module](http://www.zeamap.com/zmap_genotype/search)
 
 Browse the genotype of certain germplasms within the region of interest.
 
