@@ -1,0 +1,208 @@
+<?php
+/**
+ * Implements hook_schema.
+ */
+function zmap_genotype_schema()
+{
+    /*
+    $schema['pop_sample'] = array(
+        'description' => 'The table used for store zmap population expression tissues data.',
+        'fields' => array(
+            'sample' => array(
+                'type' => 'varchar',
+                'length' => 16,
+                'not null' => true,
+                'default' => '',
+            ),
+            'class' => array(
+                'type' => 'varchar',
+                'length' => 16,
+                'not null' => true,
+                'default' => '',
+            ),
+            'hex' => array(
+                'type' => 'varchar',
+                'length' => 8,
+                'not null' => true,
+                'default' => '',
+            ),
+            'rgb' => array(
+                'type' => 'varchar',
+                'length' => 16,
+                'not null' => true,
+                'default' => '',
+            ),
+        ),
+    );
+
+    $schema['ref_sample'] = array(
+        'description' => 'The table used for store zmap ref expression tissues data.',
+        'fields' => array(
+            'sample' => array(
+                'type' => 'varchar',
+                'length' => 32,
+                'not null' => true,
+                'default' => '',
+            ),
+            'class' => array(
+                'type' => 'varchar',
+                'length' => 8,
+                'not null' => true,
+                'default' => '',
+            ),
+            'hex' => array(
+                'type' => 'varchar',
+                'length' => 8,
+                'not null' => true,
+                'default' => '',
+            ),
+            'rgb' => array(
+                'type' => 'varchar',
+                'length' => 11,
+                'not null' => true,
+                'default' => '',
+            ),
+        ),
+    );
+
+    $schema['ref_expression_b73'] = array(
+        'description' => 'The table used for store zmap ref expression data of zea mays cultivar:b73.',
+        'fields' => array(
+            'GeneID' => array(
+                'type' => 'varchar',
+                'length' => 32,
+                'not null' => true,
+                'default' => '',
+            ),
+            'B73_Secondary_root' => array(
+                'type' => 'float',
+                'size' => 'normal',
+                'unsigned' => 'true',
+                'not null' => false,
+            ),
+            'B73_Mature_pollen' => array(
+                'type' => 'float',
+                'size' => 'normal',
+                'unsigned' => 'true',
+                'not null' => false,
+            ),
+            'B73_Internode' => array(
+                'type' => 'float',
+                'size' => 'normal',
+                'unsigned' => 'true',
+                'not null' => false,
+            ),
+            'B73_Tassel' => array(
+                'type' => 'float',
+                'size' => 'normal',
+                'unsigned' => 'true',
+                'not null' => false,
+            ),
+            'B73_Primary_root' => array(
+                'type' => 'float',
+                'size' => 'normal',
+                'unsigned' => 'true',
+                'not null' => false,
+            ),
+            'B73_Silk' => array(
+                'type' => 'float',
+                'size' => 'normal',
+                'unsigned' => 'true',
+                'not null' => false,
+            ),
+            'B73_SAM' => array(
+                'type' => 'float',
+                'size' => 'normal',
+                'unsigned' => 'true',
+                'not null' => false,
+            ),
+            'SKGeneID' => array(
+                'type' => 'varchar',
+                'length' => 32,
+                'not null' => true,
+                'default' => '',
+            ),
+        ),
+    );
+
+    $schema['ref_expression_sk'] = array(
+        'description' => 'The table used for store zmap ref expression data of zea mays cultivar:sk.',
+        'fields' => array(
+            'GeneID' => array(
+                'type' => 'varchar',
+                'length' => 32,
+                'not null' => true,
+                'default' => '',
+            ),
+            'SK_Mature_pollen' => array(
+                'type' => 'float',
+                'size' => 'normal',
+                'unsigned' => 'true',
+                'not null' => false,
+            ),
+            'SK_Immature_Ear' => array(
+                'type' => 'float',
+                'size' => 'normal',
+                'unsigned' => 'true',
+                'not null' => false,
+            ),
+            'SK_Internode' => array(
+                'type' => 'float',
+                'size' => 'normal',
+                'unsigned' => 'true',
+                'not null' => false,
+            ),
+            'SK_Tassel' => array(
+                'type' => 'float',
+                'size' => 'normal',
+                'unsigned' => 'true',
+                'not null' => false,
+            ),
+            'SK_Primary_root' => array(
+                'type' => 'float',
+                'size' => 'normal',
+                'unsigned' => 'true',
+                'not null' => false,
+            ),
+            'SK_Silk' => array(
+                'type' => 'float',
+                'size' => 'normal',
+                'unsigned' => 'true',
+                'not null' => false,
+            ),
+            'SK_Leaf' => array(
+                'type' => 'float',
+                'size' => 'normal',
+                'unsigned' => 'true',
+                'not null' => false,
+            ),
+            'SK_15_DAP_Kernel' => array(
+                'type' => 'float',
+                'size' => 'normal',
+                'unsigned' => 'true',
+                'not null' => false,
+            ),
+            'SK_SAM' => array(
+                'type' => 'float',
+                'size' => 'normal',
+                'unsigned' => 'true',
+                'not null' => false,
+            ),
+            'B73GeneID' => array(
+                'type' => 'varchar',
+                'length' => 32,
+                'not null' => true,
+                'default' => '',
+            ),
+        ),
+    );
+    */
+}
+
+/**
+ * Implements hook_uninstall.
+ */
+function zmap_genotype_uninstall()
+{
+    drupal_uninstall_schema('zmap_genotype');
+}

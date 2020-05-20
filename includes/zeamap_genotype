@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+
+dataset="/var/www/html/zea_mays/variations/genotype_dataset.txt"
+BCFTOOLS=/opt/bcftools/bcftools
+
+usage="
+------------------------------------------------------------
+A script for ZEAMAP database: 
+	format vcf file using bcftools to tsv for genotype
+------------------------------------------------------------
+USAGE:
+	$(basename $0) <dataset_ID> <Germs> <region>
+Options:
+	dataset_ID        one of this:
+##################
+$(cut -f 1 $dataset | sed '1d;s/^/#  /g' )
+##################
+	Germs             seperated by comma. eg.: B73,SK,Mo17
+	region            chr:start-end       eg.: 1:1234-5678
+Notes:
+	bcftools should be putted in PATH to run this script.
+	'genotype_dataset.txt' file should be in /var/www/html/zea_mays/variations. with format of:
+	    DataSetName	DataSetFile	SampleListFile
+	Example:
+		DataSetName                       DataSetFile                   SampleListFile
+		MaizeAMP_haplotype_tag_variants   AMP_hap_tagsnp_h.vcf.gz       MaizeAMP_haplotype_tag_variants_sample.txt
+		MaizeAMP_snp_InDel                AMP_snp_indel_anno.vcf.gz     MaizeAMP_snp_InDel_sample.txt
+		B73_vs_SK_SVs                     BS_pSV_fill_tag_anno.vcf.gz   B73_vs_SK_SVs_sample.txt
+
+------------------------------------------------------------
+                                            Songtao Gui
+                                       songtaogui@sina.com
+"
+
+if [ ! -s "$dataset" ];then
+	echo "[ERROR] --> No file: $dataset" >&2
+	exit 1
+fi
+
+if [[ $# -ne 3 ]]; then 
+	echo "$usage" >&2
+	exit 1
+fi
+
+inset=$1
+ingerm=$2
+inregion=$3
+
+# get invcf from inset and dataset
+invcf=$( cat $dataset | grep -w "$inset" | cut -f 2)
+invcf="/var/www/html/zea_mays/variations/$invcf"
+
+if [ ! -s "$invcf" ];then
+	echo "[ERROR] --> No file: $invcf" >&2
+	exit 1
+fi
+
+# if [ ! -x "$BCFTOOLS" ];then
+# 	echo "[ERROR] --> No bcftools avaliable: $BCFTOOLS" >&2
+# 	exit 1
+# fi
+# ####### Check if required programs are in PATH ######
+# num_tp_program=1;
+# for tp_program in bcftools perl 
+# do
+# 	if ! which $tp_program >/dev/null 2>&1 ; then
+# 		printf "[ERROR] --> Program not in PATH: %s \n" $tp_program >&2
+# 		let num_tp_program++
+# 	fi
+# done
+# if [[ $num_tp_program -ne 1 ]];then
+# 	exit 1;
+# fi
+# ######################################################
+
+outTSV=$( $BCFTOOLS view --force-samples --samples $ingerm $invcf $inregion | perl -lane '/^##/ && next;$,="\t"; $posi=sprintf("%s:%s",$F[0],$F[1]);$posi="Position" if $F[0]=="##CHROM";print $posi,@F[2..4],@F[9..$#F];' )
+
+if [ -z "$outTSV" ];then
+	echo "[WARNING] --> No results found for $ingerm in $inregion" >&2
+else
+	echo "$outTSV"
+fi

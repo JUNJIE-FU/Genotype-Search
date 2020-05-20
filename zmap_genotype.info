@@ -1,0 +1,5 @@
+name = Zmap Genotypes 
+description = Display Genotypes Data.
+project = zmap_genotype
+package = Zmap
+core = 7.x
