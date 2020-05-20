@@ -13,7 +13,7 @@ Browse the genotype of certain germplasms within the region of interest.
 
 ## Installation and Usage
 
-- Make sure htslib and bcftools were correctly installed, and make sure the path of bcftools executable file was added to ·$PATH· variable.
+- Make sure htslib and bcftools were correctly installed, and make sure the path of bcftools executable file was added to `$PATH` variable.
 - Download this repository
 - Switch to drupal environment, and lunch this module with
     `drush en -y zmap_genotype`
