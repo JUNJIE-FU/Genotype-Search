@@ -4,7 +4,8 @@ Browse the genotype of certain germplasms within the region of interest.
 
 ## Platform
 
-- [Drupal](https://www.drupal.org/)
+- Drupal 7.x
+- Tripal 7.x-3.x
 
 ## Prerequisite
 
